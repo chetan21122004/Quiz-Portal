@@ -68,7 +68,7 @@ const TopNavBar = ({ name }: { name: string }) => {
           <div className="bg-indigo-600 text-white p-2 rounded">
             <Book className="h-6 w-6" />
           </div>
-          <h1 className="text-xl font-bold text-gray-800">Aivaylatics</h1>
+          <h1 className="text-xl font-bold text-gray-800">ExamPlatform</h1>
         </div>
         <div className="flex items-center gap-4">
           <Button variant="ghost" size="icon">

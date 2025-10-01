@@ -147,13 +147,13 @@ export default function ReportPreview({ studentData, mcqData, aiInsights }) {
             {mockData.schoolName}
           </h1>
           <h2 style={{ color: '#2a4365', fontSize: '20px', fontWeight: 'bold', marginBottom: '12px' }}>
-            WEEKLY MCQ ASSESSMENT REPORT
+            WEEKLY EXAM ASSESSMENT REPORT
           </h2>
         </div>
         
-        {/* Student Info */}
+        {/* Examinee Info */}
         <div className="mb-4" style={{ lineHeight: '1.6' }}>
-          <p><strong>Student:</strong> {studentData.name}</p>
+          <p><strong>Examinee:</strong> {studentData.name}</p>
           <p><strong>ID:</strong> {studentData.id}</p>
           <p><strong>Class:</strong> {studentData.class}</p>
           <p><strong>Week:</strong> {mockData.week}</p>

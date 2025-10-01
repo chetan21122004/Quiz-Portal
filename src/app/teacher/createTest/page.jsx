@@ -195,8 +195,8 @@ export default function MCQGenerator() {
                 {isPublishing && <PublishingOverlay />}
                 
                 <div className="mb-8">
-                    <h1 className="text-4xl font-bold text-gray-900">Create New Test</h1>
-                    <p className="mt-2 text-gray-600">Design your test questions and configure test settings</p>
+                    <h1 className="text-4xl font-bold text-gray-900">Create New Exam</h1>
+                    <p className="mt-2 text-gray-600">Design your exam questions and configure exam settings</p>
                 </div>
 
                 <div className="space-y-6">
@@ -204,12 +204,12 @@ export default function MCQGenerator() {
                         <div className="p-6">
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
                                 <div className="col-span-1 md:col-span-2 lg:col-span-1">
-                                    <label className="block text-sm font-medium text-gray-700 mb-2">Test Title</label>
+                                    <label className="block text-sm font-medium text-gray-700 mb-2">Exam Title</label>
                                     <input
                                         type="text"
                                         value={testTitle}
                                         onChange={(e) => setTestTitle(e.target.value)}
-                                        placeholder="Enter test title"
+                                        placeholder="Enter exam title"
                                         className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
                                     />
                                 </div>
@@ -228,7 +228,7 @@ export default function MCQGenerator() {
                                 </div>
 
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-2">Student Class</label>
+                                    <label className="block text-sm font-medium text-gray-700 mb-2">Examinee Class</label>
                                     <select
                                         value={studentClass}
                                         onChange={(e) => setStudentClass(e.target.value)}
@@ -314,13 +314,13 @@ export default function MCQGenerator() {
                                             onClick={togglePreview}
                                             className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all"
                                         >
-                                            {showPreview ? "Edit Questions" : "Preview Test"}
+                                            {showPreview ? "Edit Questions" : "Preview Exam"}
                                         </button>
                                         <button
                                             onClick={publishTest}
                                             className="inline-flex items-center px-4 py-2 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-all"
                                         >
-                                            Publish Test
+                                            Publish Exam
                                         </button>
                                     </div>
                                 </div>
@@ -337,7 +337,7 @@ export default function MCQGenerator() {
                                     >
                                         <div className="bg-white rounded-xl shadow-xl w-full max-w-4xl max-h-[90vh] flex flex-col">
                                             <div className="p-4 border-b border-gray-200 flex justify-between items-center">
-                                                <h2 className="text-2xl font-bold text-gray-900">Test Preview</h2>
+                                                <h2 className="text-2xl font-bold text-gray-900">Exam Preview</h2>
                                                 <button
                                                     onClick={togglePreview}
                                                     className="p-2 text-gray-500 hover:text-gray-700 rounded-full hover:bg-gray-100 transition-all"

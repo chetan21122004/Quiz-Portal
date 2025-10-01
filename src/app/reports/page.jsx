@@ -223,12 +223,12 @@ export default function ReportsPage() {
   
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-6">Student MCQ Report Generator</h1>
+      <h1 className="text-3xl font-bold mb-6">Examinee Report Generator</h1>
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {/* Student Selection */}
+        {/* Examinee Selection */}
         <div className="bg-white p-6 rounded-lg shadow-md">
-          <h2 className="text-xl font-semibold mb-4">Select Student</h2>
+          <h2 className="text-xl font-semibold mb-4">Select Examinee</h2>
           <StudentList 
             students={STUDENTS} 
             selectedStudent={selectedStudent}
@@ -239,7 +239,7 @@ export default function ReportsPage() {
         {/* Report Preview */}
         <div className="bg-white p-6 rounded-lg shadow-md md:col-span-2">
           <h2 className="text-xl font-semibold mb-4">
-            {loading ? 'Generating Report...' : reportData ? 'Report Preview' : 'Select a Student to See Report'}
+            {loading ? 'Generating Report...' : reportData ? 'Report Preview' : 'Select an Examinee to See Report'}
           </h2>
           
           {loading && (
@@ -262,7 +262,7 @@ export default function ReportsPage() {
               <svg className="w-16 h-16 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
               </svg>
-              <p>Select a student to generate a report</p>
+              <p>Select an examinee to generate a report</p>
             </div>
           )}
         </div>

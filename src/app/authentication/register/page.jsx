@@ -69,11 +69,11 @@ export default function RegisterPage() {
                 <h1 className="text-3xl font-bold tracking-tight text-gray-900">
                   Join{" "}
                   <span className="bg-gradient-to-r from-emerald-600 to-blue-600 bg-clip-text text-transparent">
-                    Aivalytics
+                    ExamPlatform
                   </span>
                 </h1>
                 <p className="mt-3 text-lg text-gray-600">
-                  Create your {role === "teachers" ? "teacher" : "student"} account
+                  Create your {role === "teachers" ? "examiner" : "examinee"} account
                 </p>
               </div>
 

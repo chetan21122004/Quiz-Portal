@@ -12,26 +12,26 @@ export default function Active_test() {
 
   return (
     <div>
-      {/* Active Test */}
+      {/* Active Exam */}
       <div className="mt-6">
         <div className="p-6 bg-white rounded-lg shadow-sm">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-lg font-semibold text-gray-800">Active Test Sessions</h2>
+            <h2 className="text-lg font-semibold text-gray-800">Active Exam Sessions</h2>
             <button
               onClick={() => router.push('/teacher/createTest')}
               className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-emerald-500 rounded-md hover:bg-emerald-600"
             >
               <Plus className="w-4 h-4" />
-              Create Test Session
+              Create Exam Session
             </button>
           </div>
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
                 <tr className="text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  <th className="px-6 py-3">Quiz Title</th>
+                  <th className="px-6 py-3">Exam Title</th>
                   <th className="px-6 py-3">Class</th>
-                  <th className="px-6 py-3">Students</th>
+                  <th className="px-6 py-3">Examinees</th>
                   <th className="px-6 py-3">Progress</th>
                   <th className="px-6 py-3">Status</th>
                   <th className="px-6 py-3">Action</th>

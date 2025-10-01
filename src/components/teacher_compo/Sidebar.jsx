@@ -13,7 +13,7 @@ export default function Sidebar() {
       <div className="p-4">
         <Link href="/" className="flex items-center gap-2">
           <div className="h-8 bg-indigo-500 rounded-md px-2 flex items-center justify-center">
-            <span className="text-white font-bold">Aivaylatics</span>
+            <span className="text-white font-bold">ExamPlatform</span>
           </div>
         </Link>
       </div>
@@ -28,13 +28,13 @@ export default function Sidebar() {
         <SidebarLink
           href="/teacher/createTest"
           icon={<BookOpen className="w-5 h-5" />}
-          label="Create Test"
+          label="Create Exam"
           active={pathname === "/teacher/createTest"}
         />
         <SidebarLink
           href="/teacher/submittedTests"
           icon={<FileText className="w-5 h-5" />}
-          label="Submitted Tests"
+          label="Submitted Exams"
           active={pathname === "/teacher/submittedTests"}
         />
       </nav>

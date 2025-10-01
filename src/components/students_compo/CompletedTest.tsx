@@ -16,14 +16,15 @@ type CompletedTest = {
 interface CompletedTestProps {
     completedTests: CompletedTest[];
     loading: boolean;
+    onViewResults: (attempt: CompletedTest) => void;
 }
 
-export default function CompletedTest({ completedTests, loading }: CompletedTestProps) {
+export default function CompletedTest({ completedTests, loading, onViewResults }: CompletedTestProps) {
   return (
     <div>
        <div className="bg-white shadow overflow-hidden sm:rounded-lg">
             <div className="px-4 py-5 border-b border-gray-200 sm:px-6 flex justify-between items-center">
-              <h3 className="text-lg leading-6 font-medium text-gray-900">Completed Tests</h3>
+              <h3 className="text-lg leading-6 font-medium text-gray-900">Completed Exams</h3>
               <a href="#" className="text-sm font-medium text-indigo-600 hover:text-indigo-500">
                 View All
               </a>
@@ -61,7 +62,10 @@ export default function CompletedTest({ completedTests, loading }: CompletedTest
                         <span className="text-green-600 font-medium mr-4">
                           {attempt.score}/5 ({Math.round((attempt.score / 5) * 100)}%)
                         </span>
-                        <button className="inline-flex items-center px-3 py-1 border border-transparent text-sm font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200">
+                        <button 
+                          onClick={() => onViewResults(attempt)}
+                          className="inline-flex items-center px-3 py-1 border border-transparent text-sm font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200"
+                        >
                           View Results
                         </button>
                       </div>
@@ -70,7 +74,7 @@ export default function CompletedTest({ completedTests, loading }: CompletedTest
                 ))
               ) : (
                 <div className="px-4 py-5 sm:px-6 text-center text-sm text-gray-500">
-                  You have not completed any tests yet.
+                  You have not completed any exams yet.
                 </div>
               )}
             </div>

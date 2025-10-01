@@ -21,7 +21,7 @@ export default function Recent_activity() {
                     <FileText className="w-4 h-4 text-emerald-500" />
                   </div>
                 }
-                title="Physics Quiz completed by Class 10A"
+                title="Physics Exam completed by Class 10A"
                 time="2 minutes ago"
               />
               <ActivityItem
@@ -30,7 +30,7 @@ export default function Recent_activity() {
                     <Plus className="w-4 h-4 text-emerald-500" />
                   </div>
                 }
-                title="25 new MCQs added to Chemistry"
+                title="25 new Questions added to Chemistry"
                 time="15 minutes ago"
               />
               <ActivityItem
@@ -39,7 +39,7 @@ export default function Recent_activity() {
                     <Users className="w-4 h-4 text-emerald-500" />
                   </div>
                 }
-                title="New student group added: Class 11B"
+                title="New examinee group added: Class 11B"
                 time="1 hour ago"
               />
             </div>

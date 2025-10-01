@@ -77,11 +77,11 @@ export default function LoginFormPage() {
                 <h1 className="text-3xl font-bold tracking-tight text-gray-900">
                   Welcome to{" "}
                   <span className="bg-gradient-to-r from-emerald-600 to-blue-600 bg-clip-text text-transparent">
-                    Aivalytics
+                    ExamPlatform
                   </span>
                 </h1>
                 <p className="mt-3 text-lg text-gray-600">
-                  Sign in to your {role === "teachers" ? "teacher" : "student"} account
+                  Sign in to your {role === "teachers" ? "examiner" : "examinee"} account
                 </p>
               </div>
 

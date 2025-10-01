@@ -5,6 +5,7 @@ import { Search, RefreshCw, Trophy, X } from "lucide-react"
 import TopNavBar from "@/components/students_compo/TopNavBar"
 import StatsCards from "@/components/students_compo/StatsCards"
 import CompletedTest from "@/components/students_compo/CompletedTest"
+import TestResults from "@/components/students_compo/TestResults"
 import Test from "@/app/student/test"
 import { supabase } from "@/lib/supabase/client"
 
@@ -16,6 +17,8 @@ export default function StudentDashboard() {
   const [completedTests, setCompletedTests] = useState([])
   const [leaderboard, setLeaderboard] = useState([])
   const [showPreview, setShowPreview] = useState(false)
+  const [showResults, setShowResults] = useState(false)
+  const [selectedAttemptId, setSelectedAttemptId] = useState("")
   const [student, setStudent] = useState({})
 
 
@@ -147,7 +150,17 @@ const [test_id, setTest_id] = useState("")
 
   const togglePreview = () => {
     setShowPreview(!showPreview)
-}
+  }
+
+  const handleViewResults = (attempt) => {
+    setSelectedAttemptId(attempt.id)
+    setShowResults(true)
+  }
+
+  const closeResults = () => {
+    setShowResults(false)
+    setSelectedAttemptId("")
+  }
 
 
 
@@ -163,12 +176,63 @@ const [test_id, setTest_id] = useState("")
         {/* Stats cards */}
         <StatsCards tests={tests} completedTests={completedTests}/>
 
-        {/* Available Tests Section */}
+        
+        {/* Completed Tests and Leaderboard Section */}
+        <div className="mt-8 grid grid-cols-1 gap-5 lg:grid-cols-2">
+          {/* Completed Tests */}
+           <CompletedTest completedTests={completedTests} loading={loading} onViewResults={handleViewResults} />
+
+          {/* Leaderboard */}
+          <div className="bg-white shadow overflow-hidden sm:rounded-lg">
+            <div className="px-4 py-5 border-b border-gray-200 sm:px-6 flex justify-between items-center">
+              <h3 className="text-lg leading-6 font-medium text-gray-900">Leaderboard</h3>
+              <a href="#" className="text-sm font-medium text-indigo-600 hover:text-indigo-500">
+                View Full
+              </a>
+            </div>
+            <div className="divide-y divide-gray-200">
+              {loading
+                ? // Loading skeleton
+                Array(3)
+                  .fill(0)
+                  .map((_, index) => (
+                    <div key={index} className="px-4 py-4 sm:px-6">
+                      <div className="flex items-center">
+                        <div className="h-8 w-8 rounded-full bg-gray-200 animate-pulse mr-3"></div>
+                        <div className="flex-1">
+                          <div className="h-4 bg-gray-200 rounded w-1/3 animate-pulse mb-2"></div>
+                          <div className="h-3 bg-gray-200 rounded w-1/4 animate-pulse"></div>
+                        </div>
+                      </div>
+                    </div>
+                  ))
+                : leaderboard.map((student) => (
+                  <div key={student.id} className="px-4 py-4 sm:px-6">
+                    <div className="flex items-center">
+                      <div
+                        className={`flex items-center justify-center h-8 w-8 rounded-full ${student.rank === 1 ? "bg-green-100 text-green-600" : "bg-gray-100 text-gray-600"
+                          }`}
+                      >
+                        {student.rank}
+                      </div>
+                      <div className="ml-3 flex-1">
+                        <p className="text-sm font-medium text-gray-900">{student.name}</p>
+                        <p className="text-sm text-gray-500">{student.averageScore} Average Score</p>
+                      </div>
+                      {student.rank === 1 && <Trophy className="h-5 w-5 text-yellow-500" />}
+                    </div>
+                  </div>
+                ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Available Exams Section */}
         <div className="mt-8">
           <div className="bg-white shadow overflow-hidden sm:rounded-lg">
             <div className="px-4 py-5 border-b border-gray-200 sm:px-6">
               <div className="flex justify-between items-center flex-wrap sm:flex-nowrap">
-                <h3 className="text-lg leading-6 font-medium text-gray-900">Available Tests</h3>
+                <h3 className="text-lg leading-6 font-medium text-gray-900">Available Exams</h3>
                 <div className="flex mt-2 sm:mt-0 sm:ml-4">
                   {/* Search input */}
                   <div className="relative flex justify-center rounded-md shadow-sm">
@@ -178,7 +242,7 @@ const [test_id, setTest_id] = useState("")
                     <input
                       type="text"
                       className="focus:ring-indigo-500 outline-none focus:border-indigo-500 block w-full pl-10 sm:text-sm border-gray-300 rounded-md"
-                      placeholder="Search tests..."
+                      placeholder="Search exams..."
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
                     />
@@ -189,7 +253,7 @@ const [test_id, setTest_id] = useState("")
               </div>
             </div>
 
-            {/* Tests table */}
+            {/* Exams table */}
             <div className="overflow-x-auto">
               <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
@@ -198,7 +262,7 @@ const [test_id, setTest_id] = useState("")
                       scope="col"
                       className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                     >
-                      Test Name
+                      Exam Name
                     </th>
                    
                     <th
@@ -247,7 +311,7 @@ const [test_id, setTest_id] = useState("")
                     filteredTests.map((test) => (
                       <tr key={test.id}>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <div className="text-sm font-medium text-gray-900">{test.Title || 'Untitled Test'}</div>
+                          <div className="text-sm font-medium text-gray-900">{test.Title || 'Untitled Exam'}</div>
                         </td>
                         
                         <td className="px-6 py-4 whitespace-nowrap">
@@ -269,7 +333,7 @@ const [test_id, setTest_id] = useState("")
                             togglePreview()}
                           }
                           className="bg-emerald-500 hover:bg-emerald-600 text-white py-1 px-4 rounded">
-                            Start Test
+                            Start Exam
                           </button>
                         </td>
                       </tr>
@@ -277,7 +341,7 @@ const [test_id, setTest_id] = useState("")
                   ) : (
                     <tr>
                       <td colSpan={5} className="px-6 py-4 text-center text-sm text-gray-500">
-                        No tests found matching your search criteria.
+                        No exams found matching your search criteria.
                       </td>
                     </tr>
                   )}
@@ -287,55 +351,6 @@ const [test_id, setTest_id] = useState("")
           </div>
         </div>
 
-        {/* Completed Tests and Leaderboard Section */}
-        <div className="mt-8 grid grid-cols-1 gap-5 lg:grid-cols-2">
-          {/* Completed Tests */}
-          <CompletedTest completedTests={completedTests} loading={loading} />
-
-          {/* Leaderboard */}
-          <div className="bg-white shadow overflow-hidden sm:rounded-lg">
-            <div className="px-4 py-5 border-b border-gray-200 sm:px-6 flex justify-between items-center">
-              <h3 className="text-lg leading-6 font-medium text-gray-900">Leaderboard</h3>
-              <a href="#" className="text-sm font-medium text-indigo-600 hover:text-indigo-500">
-                View Full
-              </a>
-            </div>
-            <div className="divide-y divide-gray-200">
-              {loading
-                ? // Loading skeleton
-                Array(3)
-                  .fill(0)
-                  .map((_, index) => (
-                    <div key={index} className="px-4 py-4 sm:px-6">
-                      <div className="flex items-center">
-                        <div className="h-8 w-8 rounded-full bg-gray-200 animate-pulse mr-3"></div>
-                        <div className="flex-1">
-                          <div className="h-4 bg-gray-200 rounded w-1/3 animate-pulse mb-2"></div>
-                          <div className="h-3 bg-gray-200 rounded w-1/4 animate-pulse"></div>
-                        </div>
-                      </div>
-                    </div>
-                  ))
-                : leaderboard.map((student) => (
-                  <div key={student.id} className="px-4 py-4 sm:px-6">
-                    <div className="flex items-center">
-                      <div
-                        className={`flex items-center justify-center h-8 w-8 rounded-full ${student.rank === 1 ? "bg-green-100 text-green-600" : "bg-gray-100 text-gray-600"
-                          }`}
-                      >
-                        {student.rank}
-                      </div>
-                      <div className="ml-3 flex-1">
-                        <p className="text-sm font-medium text-gray-900">{student.name}</p>
-                        <p className="text-sm text-gray-500">{student.averageScore} Average Score</p>
-                      </div>
-                      {student.rank === 1 && <Trophy className="h-5 w-5 text-yellow-500" />}
-                    </div>
-                  </div>
-                ))}
-            </div>
-          </div>
-        </div>
 
         {/* Last synced info */}
         <div className="mt-6 flex items-center justify-end text-sm text-gray-500">
@@ -361,7 +376,7 @@ const [test_id, setTest_id] = useState("")
                           className="fixed inset-0 bg-transparent backdrop-blur-md  flex items-center justify-center z-50 p-4">
                           <div className="bg-white rounded-l border   shadow-lg w-full max-w-4xl max-h-[90vh] overflow-auto">
                               <div className="flex  justify-between items-center p-4 border-b border-gray-300-b">
-                                  <h2 className="text-xl font-bold">Test </h2>
+                                  <h2 className="text-xl font-bold">Exam </h2>
                                   <button onClick={togglePreview} className="text-gray-500 hover:text-gray-700">
                                       <X className="w-6 h-6" />
                                   </button>
@@ -379,6 +394,14 @@ const [test_id, setTest_id] = useState("")
                           </div>
                       </div>
                   )}
+
+       {/* Results Modal */}
+       {showResults && selectedAttemptId && (
+         <TestResults 
+           attemptId={selectedAttemptId}
+           onClose={closeResults}
+         />
+       )}
     </div>
   )
 }

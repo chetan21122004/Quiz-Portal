@@ -19,7 +19,7 @@ function Infobar_top() {
             {/* Stats Grid */}
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
                 <StatCard
-                    title="Total Test's"
+                    title="Total Exams"
                     value={count}
                     change="+12% from last month"
                     icon={
@@ -30,7 +30,7 @@ function Infobar_top() {
                     positive={true}
                 />
                 <StatCard
-                    title="Active Students"
+                    title="Active Examinees"
                     value="47"
                     change="+8% from last month"
                     icon={
@@ -41,7 +41,7 @@ function Infobar_top() {
                     positive={true}
                 />
                 <StatCard
-                    title="Active Test's"
+                    title="Active Exams"
                     value={activeTestCount}
                     change="+24% from last hour"
                     icon={

@@ -141,20 +141,38 @@ type StatsCardsProps = {
 };
 
 const StatsCards = ({ tests, completedTests }: StatsCardsProps) => {
+  // Debug logging
+  console.log('StatsCards - Tests:', tests);
+  console.log('StatsCards - Completed Tests:', completedTests);
+  
   // Calculate statistics
   const totalTests = tests.length;
-  const averageScore =
-    completedTests.length > 0
-      ? Math.round(completedTests.reduce((sum, attempt) => sum + ((attempt.score / 5) * 100), 0) / completedTests.length)
-      : 0;
+  
+  // Calculate average score - score is stored as correct count (e.g., 4 out of 5)
+  const averageScore = completedTests.length > 0
+    ? Math.round(
+        completedTests.reduce((sum, attempt) => {
+          // Score is stored as the number of correct answers
+          // We need to convert it to percentage
+          const totalQuestions = 5; // Assuming 5 questions per test (you can make this dynamic)
+          const percentage = (attempt.score / totalQuestions) * 100;
+          
+          console.log(`Test attempt - Score: ${attempt.score}/${totalQuestions} = ${percentage}%`);
+          return sum + percentage;
+        }, 0) / completedTests.length
+      )
+    : 0;
+    
   const completionRate = totalTests > 0 ? Math.round((completedTests.length / totalTests) * 100) : 0;
+  
+  console.log('Calculated Stats:', { totalTests, averageScore, completionRate });
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
       <Card className="p-6 shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
         <div className="flex items-start justify-between">
           <div>
-            <p className="text-gray-500 font-medium mb-1">Total Tests</p>
+            <p className="text-gray-500 font-medium mb-1">Total Exams</p>
             <h2 className="text-3xl font-bold">{totalTests}</h2>
             <div className="flex items-center mt-1 text-green-500 text-sm font-medium">
               <TrendingUp className="h-4 w-4 mr-1" />
