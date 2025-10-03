@@ -8,12 +8,7 @@ export default function Recent_activity() {
   return (
     <div>
       <div className="p-6 mt-6 bg-white rounded-lg shadow-sm">
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-lg font-semibold text-gray-800">Recent Activity</h2>
-              <Link href="/activity" className="text-sm text-emerald-500 hover:underline">
-                View all
-              </Link>
-            </div>
+           
             <div className="space-y-4">
               <ActivityItem
                 icon={

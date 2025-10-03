@@ -12,39 +12,55 @@ export default function Active_test() {
 
   return (
     <div>
-      {/* Active Exam */}
-      <div className="mt-6">
-        <div className="p-6 bg-white rounded-lg shadow-sm">
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-lg font-semibold text-gray-800">Active Exam Sessions</h2>
-            <button
-              onClick={() => router.push('/teacher/createTest')}
-              className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-emerald-500 rounded-md hover:bg-emerald-600"
-            >
-              <Plus className="w-4 h-4" />
-              Create Exam Session
-            </button>
-          </div>
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead>
-                <tr className="text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  <th className="px-6 py-3">Exam Title</th>
-                  <th className="px-6 py-3">Class</th>
-                  <th className="px-6 py-3">Examinees</th>
-                  <th className="px-6 py-3">Progress</th>
-                  <th className="px-6 py-3">Status</th>
-                  <th className="px-6 py-3">Action</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-200">
-                <QuizSessionRow title="Physics Mid-Term" className="SYBCA-C" students="45/50" progress={45 / 50 * 100} />
-                <QuizSessionRow title="Chemistry Quiz" className="FYBCA-A" students="38/40" progress={38 / 40 * 100} />
-              </tbody>
-            </table>
-          </div>
-        </div>
+      {/* Create Exam Button */}
+      <div className="flex justify-end mb-6">
+        <button
+          onClick={() => router.push('/teacher/createTest')}
+          className="flex items-center gap-2 px-6 py-3 text-sm font-medium text-white bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-lg hover:from-emerald-600 hover:to-emerald-700 shadow-lg hover:shadow-xl transition-all duration-200"
+        >
+          <Plus className="w-4 h-4" />
+          Create New Exam
+        </button>
       </div>
+
+      {/* Exam Sessions Table */}
+      <div className="overflow-x-auto">
+        <table className="w-full">
+          <thead>
+            <tr className="text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-200">
+              <th className="px-6 py-4">Exam Title</th>
+              <th className="px-6 py-4">Class</th>
+              <th className="px-6 py-4">Examinees</th>
+              <th className="px-6 py-4">Progress</th>
+              <th className="px-6 py-4">Status</th>
+              <th className="px-6 py-4">Action</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-gray-100">
+            <QuizSessionRow title="Physics Mid-Term" className="SYBCA-C" students="45/50" progress={45 / 50 * 100} />
+            <QuizSessionRow title="Chemistry Exam" className="FYBCA-A" students="38/40" progress={38 / 40 * 100} />
+          </tbody>
+        </table>
+      </div>
+
+      {/* Empty State */}
+      {/* You can uncomment this when there are no active exams */}
+      {/* 
+      <div className="text-center py-12">
+        <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <Plus className="w-8 h-8 text-gray-400" />
+        </div>
+        <h3 className="text-lg font-medium text-gray-900 mb-2">No Active Exams</h3>
+        <p className="text-gray-500 mb-6">Create your first exam to get started</p>
+        <button
+          onClick={() => router.push('/teacher/createTest')}
+          className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-white bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-lg hover:from-emerald-600 hover:to-emerald-700 transition-all duration-200"
+        >
+          <Plus className="w-4 h-4" />
+          Create Exam
+        </button>
+      </div>
+      */}
     </div>
   )
 }

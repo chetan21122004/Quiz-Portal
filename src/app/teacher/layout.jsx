@@ -7,7 +7,7 @@ function layout({children}) {
   return (
     <div className='flex '>
         <Sidebar/>
-        <div className=" flex-3/4">
+        <div className=" flex w-full ">
         {children}
         </div>
     </div>

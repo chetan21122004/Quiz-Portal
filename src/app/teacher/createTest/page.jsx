@@ -189,50 +189,87 @@ export default function MCQGenerator() {
     );
 
     return (
-        <div className="min-h-screen bg-gray-50 py-8">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-100">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 {loading && <LoadingOverlay />}
                 {isPublishing && <PublishingOverlay />}
                 
-                <div className="mb-8">
-                    <h1 className="text-4xl font-bold text-gray-900">Create New Exam</h1>
-                    <p className="mt-2 text-gray-600">Design your exam questions and configure exam settings</p>
+                {/* Enhanced Header */}
+                <div className="mb-8 text-center">
+                    <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-2xl mb-4">
+                        <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                        </svg>
+                    </div>
+                    <h1 className="text-4xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-2">
+                        Create New Exam
+                    </h1>
+                    <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                        Design comprehensive exam questions and configure settings to create engaging assessments for your examinees
+                    </p>
                 </div>
 
-                <div className="space-y-6">
-                    <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                <div className="space-y-8">
+                    {/* Exam Configuration Card */}
+                    <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 overflow-hidden">
+                        <div className="bg-gradient-to-r from-indigo-500 to-purple-600 px-6 py-4">
+                            <h2 className="text-xl font-bold text-white flex items-center">
+                                <svg className="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg>
+                                Exam Configuration
+                            </h2>
+                            <p className="text-indigo-100 text-sm mt-1">Set up your exam details and parameters</p>
+                        </div>
+                        
                         <div className="p-6">
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
                                 <div className="col-span-1 md:col-span-2 lg:col-span-1">
-                                    <label className="block text-sm font-medium text-gray-700 mb-2">Exam Title</label>
+                                    <label className="block text-sm font-semibold text-gray-700 mb-2 flex items-center">
+                                        <svg className="w-4 h-4 mr-1 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+                                        </svg>
+                                        Exam Title
+                                    </label>
                                     <input
                                         type="text"
                                         value={testTitle}
                                         onChange={(e) => setTestTitle(e.target.value)}
                                         placeholder="Enter exam title"
-                                        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                                        className="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all shadow-sm hover:shadow-md"
                                     />
                                 </div>
 
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-2">Difficulty Level</label>
+                                    <label className="block text-sm font-semibold text-gray-700 mb-2 flex items-center">
+                                        <svg className="w-4 h-4 mr-1 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                        </svg>
+                                        Difficulty Level
+                                    </label>
                                     <select
                                         value={difficulty}
                                         onChange={(e) => setDifficulty(e.target.value)}
-                                        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all appearance-none bg-white"
+                                        className="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all appearance-none bg-white shadow-sm hover:shadow-md"
                                     >
-                                        <option value="Easy">Easy</option>
-                                        <option value="Medium">Medium</option>
-                                        <option value="Hard">Hard</option>
+                                        <option value="Easy">🟢 Easy</option>
+                                        <option value="Medium">🟡 Medium</option>
+                                        <option value="Hard">🔴 Hard</option>
                                     </select>
                                 </div>
 
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-2">Examinee Class</label>
+                                    <label className="block text-sm font-semibold text-gray-700 mb-2 flex items-center">
+                                        <svg className="w-4 h-4 mr-1 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
+                                        </svg>
+                                        Examinee Class
+                                    </label>
                                     <select
                                         value={studentClass}
                                         onChange={(e) => setStudentClass(e.target.value)}
-                                        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all appearance-none bg-white"
+                                        className="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all appearance-none bg-white shadow-sm hover:shadow-md"
                                     >
                                         <option value="SYBCA-C">SYBCA-C</option>
                                         <option value="SYMCA-B">SYMCA-B</option>
@@ -246,57 +283,78 @@ export default function MCQGenerator() {
                                 </div>
                             </div>
 
-                            <div className="space-y-4">
+                            <div className="space-y-6">
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-2">Topic</label>
+                                    <label className="block text-sm font-semibold text-gray-700 mb-2 flex items-center">
+                                        <svg className="w-4 h-4 mr-1 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                        </svg>
+                                        Topic & Content
+                                    </label>
                                     <textarea
                                         value={topic}
                                         onChange={(e) => setTopic(e.target.value)}
-                                        placeholder="Enter the topic for question generation..."
-                                        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all min-h-[100px]"
+                                        placeholder="Enter the topic for question generation (e.g., Data Structures, Algorithms, Database Management)..."
+                                        className="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all min-h-[120px] shadow-sm hover:shadow-md resize-none"
                                     />
                                 </div>
 
-                                <div className="flex items-center justify-between">
-                                    <div className="flex items-center space-x-4">
+                                <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
+                                    <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                                        <svg className="w-5 h-5 mr-2 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4" />
+                                        </svg>
+                                        Question Settings
+                                    </h3>
+                                    
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                         <div>
-                                            <label className="block text-sm font-medium text-gray-700 mb-2">Number of Questions</label>
+                                            <label className="block text-sm font-semibold text-gray-700 mb-2">Number of Questions</label>
                                             <select
                                                 value={noOfQue}
                                                 onChange={(e) => setNoOfQue(e.target.value)}
-                                                className="w-32 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all appearance-none bg-white"
+                                                className="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all appearance-none bg-white shadow-sm hover:shadow-md"
                                             >
-                                                <option value="5">5</option>
-                                                <option value="10">10</option>
-                                                <option value="15">15</option>
-                                                <option value="20">20</option>
+                                                <option value="5">📝 5 Questions</option>
+                                                <option value="10">📋 10 Questions</option>
+                                                <option value="15">📄 15 Questions</option>
+                                                <option value="20">📚 20 Questions</option>
                                             </select>
                                         </div>
-                                        <div className="flex items-center space-x-2">
-                                            <input
-                                                type="checkbox"
-                                                id="randomize"
-                                                checked={randomizeQuestions}
-                                                onChange={(e) => setRandomizeQuestions(e.target.checked)}
-                                                className="w-4 h-4 text-blue-500 border-gray-300 rounded focus:ring-blue-500"
-                                            />
-                                            <label htmlFor="randomize" className="text-sm text-gray-700">Randomize Questions</label>
+                                        
+                                        <div className="flex items-center">
+                                            <div className="flex items-center space-x-3 bg-white rounded-xl p-4 border border-gray-200 shadow-sm hover:shadow-md transition-all">
+                                                <input
+                                                    type="checkbox"
+                                                    id="randomize"
+                                                    checked={randomizeQuestions}
+                                                    onChange={(e) => setRandomizeQuestions(e.target.checked)}
+                                                    className="w-5 h-5 text-indigo-500 border-gray-300 rounded focus:ring-indigo-500"
+                                                />
+                                                <label htmlFor="randomize" className="text-sm font-medium text-gray-700 flex items-center">
+                                                    <svg className="w-4 h-4 mr-1 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
+                                                    </svg>
+                                                    Randomize Questions
+                                                </label>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div className="flex space-x-4">
+                                    
+                                    <div className="flex flex-col sm:flex-row gap-4 mt-6">
                                         <button
                                             onClick={fetchMCQs}
-                                            className="inline-flex items-center px-4 py-2 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all"
+                                            className="flex-1 inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-xl shadow-lg text-sm font-semibold text-white bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-200 transform hover:scale-105"
                                         >
                                             <Wand2 className="h-5 w-5 mr-2" />
-                                            Generate Questions
+                                            ✨ Generate Questions with AI
                                         </button>
                                         <button
                                             onClick={addQuestion}
-                                            className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all"
+                                            className="inline-flex items-center justify-center px-6 py-3 border border-gray-300 rounded-xl shadow-sm text-sm font-semibold text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-200"
                                         >
                                             <Plus className="h-5 w-5 mr-2" />
-                                            Add Question
+                                            Add Manual Question
                                         </button>
                                     </div>
                                 </div>
@@ -305,25 +363,43 @@ export default function MCQGenerator() {
                     </div>
 
                     {mcqs.length > 0 && (
-                        <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-                            <div className="p-6">
-                                <div className="flex justify-between items-center mb-6">
-                                    <h2 className="text-xl font-semibold text-gray-900">Questions</h2>
-                                    <div className="flex space-x-4">
+                        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 overflow-hidden">
+                            <div className="bg-gradient-to-r from-emerald-500 to-teal-600 px-6 py-4">
+                                <div className="flex justify-between items-center">
+                                    <div>
+                                        <h2 className="text-xl font-bold text-white flex items-center">
+                                            <svg className="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                            </svg>
+                                            Questions ({mcqs.length})
+                                        </h2>
+                                        <p className="text-emerald-100 text-sm mt-1">Review and manage your exam questions</p>
+                                    </div>
+                                    <div className="flex space-x-3">
                                         <button
                                             onClick={togglePreview}
-                                            className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all"
+                                            className="inline-flex items-center px-4 py-2 border border-white/30 rounded-xl shadow-sm text-sm font-semibold text-white bg-white/20 hover:bg-white/30 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white/50 transition-all duration-200 backdrop-blur-sm"
                                         >
-                                            {showPreview ? "Edit Questions" : "Preview Exam"}
+                                            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                            </svg>
+                                            {showPreview ? "✏️ Edit Questions" : "👁️ Preview Exam"}
                                         </button>
                                         <button
                                             onClick={publishTest}
-                                            className="inline-flex items-center px-4 py-2 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-all"
+                                            className="inline-flex items-center px-6 py-2 border border-transparent rounded-xl shadow-lg text-sm font-semibold text-white bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-all duration-200 transform hover:scale-105"
                                         >
-                                            Publish Exam
+                                            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                                            </svg>
+                                            🚀 Publish Exam
                                         </button>
                                     </div>
                                 </div>
+                            </div>
+                            
+                            <div className="p-6">
 
                                 {showPreview ? (
                                     <div 
@@ -357,43 +433,71 @@ export default function MCQGenerator() {
                                         </div>
                                     </div>
                                 ) : (
-                                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                                    <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
                                         {mcqs.map((mcq, index) => (
-                                            <div key={index} className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+                                            <div key={index} className="bg-gradient-to-br from-white to-gray-50 p-6 rounded-2xl border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                                                 <div className="flex justify-between items-start mb-4">
-                                                    <h3 className="text-lg font-medium text-gray-900">Question {index + 1}</h3>
+                                                    <div className="flex items-center">
+                                                        <div className="w-8 h-8 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">
+                                                            {index + 1}
+                                                        </div>
+                                                        <h3 className="text-lg font-semibold text-gray-900">Question {index + 1}</h3>
+                                                    </div>
                                                     <button
                                                         onClick={() => removeQuestion(index)}
-                                                        className="p-1.5 text-gray-500 hover:text-red-500 hover:bg-red-50 rounded-full transition-all"
+                                                        className="p-2 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-full transition-all duration-200 transform hover:scale-110"
                                                     >
                                                         <Trash2 className="h-4 w-4" />
                                                     </button>
                                                 </div>
                                                 <div className="space-y-4">
-                                                    <textarea
-                                                        value={mcq.question}
-                                                        onChange={(e) => updateQuestion(index, "question", e.target.value)}
-                                                        placeholder="Enter your question"
-                                                        className="w-full p-2.5 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
-                                                        rows="3"
-                                                    />
+                                                    <div className="relative">
+                                                        <label className="block text-xs font-semibold text-gray-600 mb-2 uppercase tracking-wide">Question Text</label>
+                                                        <textarea
+                                                            value={mcq.question}
+                                                            onChange={(e) => updateQuestion(index, "question", e.target.value)}
+                                                            placeholder="Enter your question here..."
+                                                            className="w-full p-3 text-sm border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all shadow-sm hover:shadow-md resize-none"
+                                                            rows="3"
+                                                        />
+                                                    </div>
+                                                    
                                                     <div className="space-y-3">
+                                                        <label className="block text-xs font-semibold text-gray-600 mb-2 uppercase tracking-wide">Answer Options</label>
                                                         {mcq.options.map((option, optionIndex) => (
-                                                            <div key={optionIndex} className="flex items-center space-x-2">
-                                                                <input
-                                                                    type="radio"
-                                                                    name={`correct-${index}`}
-                                                                    checked={mcq.correctAnswer === option}
-                                                                    onChange={() => setCorrectAnswer(index, option)}
-                                                                    className="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500"
-                                                                />
-                                                                <input
-                                                                    type="text"
-                                                                    value={option}
-                                                                    onChange={(e) => updateOption(index, optionIndex, e.target.value)}
-                                                                    placeholder={`Option ${optionIndex + 1}`}
-                                                                    className="flex-1 p-2.5 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
-                                                                />
+                                                            <div key={optionIndex} className="flex items-center space-x-3 group">
+                                                                <div className="relative">
+                                                                    <input
+                                                                        type="radio"
+                                                                        name={`correct-${index}`}
+                                                                        checked={mcq.correctAnswer === option}
+                                                                        onChange={() => setCorrectAnswer(index, option)}
+                                                                        className="w-5 h-5 text-emerald-500 border-gray-300 focus:ring-emerald-500 transition-all"
+                                                                    />
+                                                                    {mcq.correctAnswer === option && (
+                                                                        <div className="absolute -top-1 -right-1 w-3 h-3 bg-emerald-500 rounded-full flex items-center justify-center">
+                                                                            <svg className="w-2 h-2 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                                                                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                                                                            </svg>
+                                                                        </div>
+                                                                    )}
+                                                                </div>
+                                                                <div className="flex-1 relative">
+                                                                    <input
+                                                                        type="text"
+                                                                        value={option}
+                                                                        onChange={(e) => updateOption(index, optionIndex, e.target.value)}
+                                                                        placeholder={`Option ${String.fromCharCode(65 + optionIndex)}`}
+                                                                        className={`w-full p-3 text-sm border rounded-xl focus:ring-2 focus:ring-indigo-500 transition-all shadow-sm hover:shadow-md ${
+                                                                            mcq.correctAnswer === option 
+                                                                                ? 'border-emerald-300 bg-emerald-50 focus:border-emerald-500' 
+                                                                                : 'border-gray-300 focus:border-indigo-500'
+                                                                        }`}
+                                                                    />
+                                                                    <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-xs font-bold text-gray-400 pointer-events-none">
+                                                                        {String.fromCharCode(65 + optionIndex)}.
+                                                                    </span>
+                                                                </div>
                                                             </div>
                                                         ))}
                                                     </div>
